@@ -1,4 +1,5 @@
-package se.consid.fitness.integration.java;
+package se.consid.fitness;
+
 /*
  * Copyright 2013 Red Hat, Inc.
  *
@@ -18,17 +19,17 @@ package se.consid.fitness.integration.java;
  */
 
 import org.vertx.java.platform.Verticle;
-import org.vertx.testtools.VertxAssert;
 
-public class SomeVerticle extends Verticle {
+/**
+ */
+public class StartVerticle extends Verticle {
 
-  public void start() {
-    VertxAssert.initialize(vertx);
+	@Override
+	public void start() {
+		container.logger().info("Starting Verticles");
 
-    // You can also assert from other verticles!!
-    VertxAssert.assertEquals("foo", "foo");
+		container.deployVerticle("se.consid.fitness.PingVerticle");
+		container.deployVerticle("se.consid.fitness.CommandVerticle");
+	}
 
-    // And complete tests from other verticles
-    VertxAssert.testComplete();
-  }
 }
