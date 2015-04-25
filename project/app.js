@@ -126,7 +126,7 @@ var config = container.config;
 // https://github.com/vert-x/mod-mailer
 // container.deployModule('io.vertx~mod-mailer~2.0.0-final', config.mailerConf);
 
-//container.deployModule('se.consid.poa~anmalan~0.1', config.poaConf);
+container.deployModule('se.consid.fitness~traning~0.1');
 // container.deployModule('com.consid.react~reactive-module~0.1');
 // container.deployModule('se.consid.reactive~OppnaAnmalan~0.1');
 // container.deployModule('se.consid.reactive~SearchLogger~0.1');
