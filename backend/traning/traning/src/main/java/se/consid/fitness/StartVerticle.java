@@ -32,6 +32,10 @@ public class StartVerticle extends Verticle {
 		container.deployVerticle("se.consid.fitness.anvandare.AnvandareCommandHandlerVerticle");
 		container.deployVerticle("se.consid.fitness.queries.HamtaTraningstillfalleVerticle");
 		container.deployVerticle("se.consid.fitness.QueryVerticle");
+
+		// Projections
+		container.deployVerticle("se.consid.fitness.projections.TraningstillfallenPerAnvandareRegistreradVerticle");
+		container.deployVerticle("se.consid.fitness.projections.TraningstillfallenPerAnvandareRedigeradVerticle");
 	}
 
 }
