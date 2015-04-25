@@ -73,6 +73,11 @@ var logins = [
 		'_id': 'jh',
 		'epost': 'johan.hanson@consid.se',
 		'losenord': 'jh'
+	},
+	{
+		'_id': 'mm',
+		'epost': 'mathias.malmberg@consid.se',
+		'losenord': 'mm'
 	}
 ];
 
@@ -101,7 +106,38 @@ var anvandare = [
 		'_id': 'jh',
 		'namn': 'Johan Hanson',
 		'kontor': 'jkp'
+	},
+	{
+		'_id': 'mm',
+		'namn': 'Mathias Malmberg',
+		'kontor': 'jkp'
 	}
+];
+
+var traningstillfallenperanvandare = [
+	{
+		'_id': 'mm',
+        'namn': 'Mathias Malmberg',
+        'kontorstillhorighet': 'jkp',
+        'traningstillfallen': [
+			{
+				'_id': '8271461287',
+				'varde': '4530',
+				'datum': '2014-10-01T16:19:34Z',
+				'namn': 'Löpning',
+				'poang': '531',
+				'enhet': 'meter'
+			},
+			{
+				'_id': '8271461287',
+				'varde': '6000',
+				'datum': '2014-10-04T16:19:34Z',
+				'namn': 'Löpning',
+				'poang': '531',
+				'enhet': 'meter'
+			}
+		]
+    }
 ];
 
 
@@ -111,37 +147,47 @@ eb.send(pa, {action: 'delete', collection: 'traningsaktiviteter', matcher: {}}, 
 	eb.send(pa, {action: 'delete', collection: 'kontor', matcher: {}}, function(reply) {
 		eb.send(pa, {action: 'delete', collection: 'logins', matcher: {}}, function(reply) {
 			eb.send(pa, {action: 'delete', collection: 'anvandare', matcher: {}}, function(reply) {
-				for (var i = 0; i < traningsaktiviteter.length; i++) {
-					eb.send(pa, {
-						action: 'save',
-						collection: 'traningsaktiviteter',
-						document: traningsaktiviteter[i]
-					});
-				}
-				
-				for (var i = 0; i < kontor.length; i++) {
-					eb.send(pa, {
-						action: 'save',
-						collection: 'kontor',
-						document: kontor[i]
-					});
-				}
-				
-				for (var i = 0; i < logins.length; i++) {
-					eb.send(pa, {
-						action: 'save',
-						collection: 'logins',
-						document: logins[i]
-					});
-				}
-				
-				for (var i = 0; i < anvandare.length; i++) {
-					eb.send(pa, {
-						action: 'save',
-						collection: 'anvandare',
-						document: anvandare[i]
-					});
-				}
+				eb.send(pa, {action: 'delete', collection: 'traningstillfallenperanvandare', matcher: {}}, function(reply) {
+					for (var i = 0; i < traningsaktiviteter.length; i++) {
+						eb.send(pa, {
+							action: 'save',
+							collection: 'traningsaktiviteter',
+							document: traningsaktiviteter[i]
+						});
+					}
+					
+					for (var i = 0; i < kontor.length; i++) {
+						eb.send(pa, {
+							action: 'save',
+							collection: 'kontor',
+							document: kontor[i]
+						});
+					}
+					
+					for (var i = 0; i < logins.length; i++) {
+						eb.send(pa, {
+							action: 'save',
+							collection: 'logins',
+							document: logins[i]
+						});
+					}
+					
+					for (var i = 0; i < anvandare.length; i++) {
+						eb.send(pa, {
+							action: 'save',
+							collection: 'anvandare',
+							document: anvandare[i]
+						});
+					}
+					
+					for(var i = 0; i < traningstillfallenperanvandare.length; i++){
+						eb.send(pa, {
+							action: 'save',
+							collection: 'traningstillfallenperanvandare',
+							document: traningstillfallenperanvandare[i]
+						});
+					}
+				});
 			});
 		});
 	});

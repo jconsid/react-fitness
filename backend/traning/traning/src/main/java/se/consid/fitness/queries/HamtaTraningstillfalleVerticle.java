@@ -36,8 +36,8 @@ public class HamtaTraningstillfalleVerticle extends Verticle {
 	private JsonObject createQuery(JsonObject body) {
 		final JsonObject query = new JsonObject();
 		query.putString("action", "find");
-		query.putString("collection", "traningstillfalle");
-		query.putString("_id", body.getString("_id"));
+		query.putString("collection", "traningstillfallenperanvandare");
+		query.putObject("matcher", body);
 		return query;
 	}
 }
