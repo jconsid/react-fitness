@@ -5,6 +5,8 @@ package se.consid.fitness.commands;
 
 import java.util.Date;
 
+import org.vertx.java.core.json.JsonObject;
+
 import se.consid.fitness.base.AbstractCommand;
 
 /**
@@ -16,12 +18,15 @@ public class RegistreraTraningsaktivitet extends AbstractCommand {
 	private final Date datum;
 	private final double varde;
 
-	public RegistreraTraningsaktivitet(final String anvandareId, final String traningsaktivitetId, final Date datum,
-			final double varde) {
-		this.anvandareId = anvandareId;
-		this.traningsaktivitetId = traningsaktivitetId;
-		this.datum = datum;
-		this.varde = varde;
+	private RegistreraTraningsaktivitet(final JsonObject json) {
+		anvandareId = json.getString("anvandareId");
+		traningsaktivitetId = json.getString("traningsaktivitetId");
+		datum = new Date();
+		varde = (Double) json.getNumber("varde");
+	}
+
+	public static RegistreraTraningsaktivitet from(final JsonObject json) {
+		return new RegistreraTraningsaktivitet(json);
 	}
 
 	public String getAnvandareId() {
