@@ -24,21 +24,18 @@ public class QueryVerticle extends Verticle {
 		final RouteMatcher rm = new RouteMatcher();
 
 		rm.get("/anvandare/:id/traningstillfalle", new Handler<HttpServerRequest>() {
+
 			@Override
 			public void handle(final HttpServerRequest req) {
 
 				final JsonObject query = new JsonObject();
 				query.putString("_id", req.params().get("id"));
 
-				vertx.eventBus().send("query.hamta.traningstillfalle", query, new Handler<Message<JsonObject>>() {
+				vertx.eventBus().send("query.hamta.traningstillfalle", query, (Handler<Message<JsonObject>>) dbResponse -> {
+					final JsonObject answer = dbResponse.body();
 
-					@Override
-					public void handle(final Message<JsonObject> dbResponse) {
-						final JsonObject answer = dbResponse.body();
-
-						req.response().headers().add("Content-Type", "application/json; charset=utf-8");
-						req.response().end(answer.toString());
-					}
+					req.response().headers().add("Content-Type", "application/json; charset=utf-8");
+					req.response().end(answer.toString());
 				});
 
 			}
