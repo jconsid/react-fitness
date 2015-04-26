@@ -15,7 +15,7 @@ public class Traningsaktivitet {
 	private final int id;
 	private final String namn;
 	private final double traningsekvivalent;
-	private final double minVarde;
+	private final int minVarde;
 	private final String enhet;
 	private final Date[] period;
 
@@ -23,7 +23,7 @@ public class Traningsaktivitet {
 		id = json.getInteger("_id");
 		namn = json.getString("namn");
 		traningsekvivalent = (Double) json.getNumber("traningsekvivalent");
-		minVarde = (Double) json.getNumber("minVarde");
+		minVarde = (Integer) json.getNumber("minVarde");
 		enhet = json.getString("enhet");
 		period = null;
 	}

@@ -8,30 +8,30 @@ var traningsaktiviteter = [
 	{
 		'_id': 0,
 		'namn': 'Löpning',
-		'traningsekvivalent': 450,
-		'minvarde': 1,
+		'traningsekvivalent': 450.1,
+		'minVarde': 1,
 		'enhet': 'km'
 	},
 	{
 		'_id': 1,
 		'namn': 'Cykling',
-		'traningsekvivalent': 200,
-		'minvarde': 1,
+		'traningsekvivalent': 200.1,
+		'minVarde': 1,
 		'enhet': 'km'
 	},
 	{
 		'_id': 2,
 		'namn': 'Simning',
-		'traningsekvivalent': 2,
-		'minvarde': 200,
+		'traningsekvivalent': 2.1,
+		'minVarde': 200,
 		'enhet': 'm',
 		'period' : ['2015-05-01', '2015-09-01']
 	},
 	{
 		'_id': 3,
 		'namn': 'Säckhoppning',
-		'traningsekvivalent': 4,
-		'minvarde': 10,
+		'traningsekvivalent': 4.1,
+		'minVarde': 10,
 		'enhet': 'm',
 		'kontor': 'jkp'
 	}
@@ -89,32 +89,32 @@ var anvandare = [
 	{
 		'_id': 'aj',
 		'namn': 'Anders Johansson',
-		'kontor': 'jkp'
+		'kontorstillhorighet': 'jkp'
 	},
 	{
 		'_id': 'bs',
 		'namn': 'Björn Svanmo',
-		'kontor': 'jkp'
+		'kontorstillhorighet': 'jkp'
 	},
 	{
 		'_id': 'nl',
 		'namn': 'Niklas Lindblad',
-		'kontor': 'sdl'
+		'kontorstillhorighet': 'sdl'
 	},
 	{
 		'_id': 'esa',
 		'namn': 'Esbjörn Johansson',
-		'kontor': 'jkp'
+		'kontorstillhorighet': 'jkp'
 	},
 	{
 		'_id': 'jh',
 		'namn': 'Johan Hanson',
-		'kontor': 'jkp'
+		'kontorstillhorighet': 'jkp'
 	},
 	{
 		'_id': 'mm',
 		'namn': 'Mathias Malmberg',
-		'kontor': 'jkp'
+		'kontorstillhorighet': 'jkp'
 	}
 ];
 

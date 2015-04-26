@@ -44,11 +44,17 @@ public class AnvandareCommandHandlerVerticle extends Verticle {
 
 		eb.send("anvandareRepository.load", registreraTraningsaktivitet.getAnvandareId(), (
 				final Message<JsonObject> message) -> {
-			final Anvandare anvandare = Anvandare.from(message.body());
-			container.logger().info("Fick " + anvandare);
+					final Anvandare anvandare = Anvandare.from(message.body());
+					container.logger().info("Fick " + anvandare);
 
-			anvandare.registreraTraningsaktivitet(aktivitet, registreraTraningsaktivitet);
-			anvandare.getUncommittedEvents().forEach(e -> eb.publish("TraningsaktivitetRegistrerad", e.toJson()));
-		});
+					anvandare.registreraTraningsaktivitet(aktivitet, registreraTraningsaktivitet);
+					anvandare.getUncommittedEvents().forEach(e -> {
+						final JsonObject event = e.toJson();
+						container.logger().info("Skickar " + event);
+
+						eb.publish("TraningsaktivitetRegistrerad", event);
+					});
+				});
 	}
+
 }

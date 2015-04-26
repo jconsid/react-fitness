@@ -29,8 +29,10 @@ public class Anvandare extends AggregateRoot {
 		kontorstillhorighet = json.getString("kontorstillhorighet");
 		traningstillfallen = new ArrayList<>();
 
-		json.getArray("traningstillfallen")
-		.forEach(j -> traningstillfallen.add(Traningstillfalle.from((JsonObject) j)));
+		final JsonArray tillfallen = json.getArray("traningstillfallen");
+		if (tillfallen != null) {
+			tillfallen.forEach(j -> traningstillfallen.add(Traningstillfalle.from((JsonObject) j)));
+		}
 	}
 
 	public static Anvandare from(final JsonObject json) {
