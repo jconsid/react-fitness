@@ -42,19 +42,21 @@ public class AnvandareCommandHandlerVerticle extends Verticle {
 			final Traningsaktivitet aktivitet) {
 		final EventBus eb = vertx.eventBus();
 
-		eb.send("anvandareRepository.load", registreraTraningsaktivitet.getAnvandareId(), (
-				final Message<JsonObject> message) -> {
-					final Anvandare anvandare = Anvandare.from(message.body());
-					container.logger().info("Fick " + anvandare);
+		final String anvandareId = registreraTraningsaktivitet.getAnvandareId();
+		eb.send("anvandareRepository.load", anvandareId, (final Message<JsonObject> message) -> {
+			final Anvandare anvandare = Anvandare.from(message.body());
+			container.logger().info("Fick " + anvandare);
 
-					anvandare.registreraTraningsaktivitet(aktivitet, registreraTraningsaktivitet);
-					anvandare.getUncommittedEvents().forEach(e -> {
-						final JsonObject event = e.toJson();
-						container.logger().info("Skickar " + event);
+			anvandare.registreraTraningsaktivitet(aktivitet, registreraTraningsaktivitet);
+			anvandare.getUncommittedEvents().forEach(e -> {
+				final JsonObject event = e.toJson();
+				container.logger().info("Skickar " + event);
 
-						eb.publish("TraningsaktivitetRegistrerad", event);
-					});
-				});
+				eb.publish("TraningsaktivitetRegistrerad", event);
+			});
+
+			eb.send("anvandareRepository.store", anvandare.toJson());
+		});
 	}
 
 }

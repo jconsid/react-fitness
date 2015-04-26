@@ -29,21 +29,26 @@ public class StartVerticle extends Verticle {
 	public void start() {
 		container.logger().info("Starting Verticles");
 
-		container.deployVerticle("se.consid.fitness.PingVerticle");
+		// Command gateway
 		container.deployVerticle("se.consid.fitness.CommandVerticle");
+
+		// Administration
+		container.deployVerticle("se.consid.fitness.administration.TraningsaktivitetRepositoryVerticle");
+
+		// Träning
+		container.deployVerticle("se.consid.fitness.anvandare.AnvandareCommandHandlerVerticle");
+		container.deployVerticle("se.consid.fitness.anvandare.AnvandareRepositoryVerticle");
+
 		container.deployVerticle("se.consid.fitness.queries.HamtaTraningstillfalleVerticle");
 		container.deployVerticle("se.consid.fitness.QueryVerticle");
-		
-		
-		RouteManager routeManager = new RouteManager();
+
+		final RouteManager routeManager = new RouteManager();
 		try {
 			routeManager.startRoutes();
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
 }
