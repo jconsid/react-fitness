@@ -5,6 +5,8 @@ package se.consid.fitness.base;
 
 import java.util.UUID;
 
+import org.vertx.java.core.json.JsonObject;
+
 /**
  */
 public abstract class AbstractEvent {
@@ -30,5 +32,7 @@ public abstract class AbstractEvent {
 	public long getTimestamp() {
 		return timestamp;
 	}
+
+	public abstract JsonObject toJson();
 
 }

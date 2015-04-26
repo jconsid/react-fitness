@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -23,7 +22,7 @@ public class AggregateRoot {
 
 	private final List<AbstractEvent> uncommittedEvents = new ArrayList<>();
 
-	protected UUID id;
+	protected String id;
 	protected int version = 0;
 	protected long timestamp = 0;
 
@@ -47,7 +46,7 @@ public class AggregateRoot {
 		return System.currentTimeMillis();
 	}
 
-	public UUID id() {
+	public String id() {
 		return id;
 	}
 

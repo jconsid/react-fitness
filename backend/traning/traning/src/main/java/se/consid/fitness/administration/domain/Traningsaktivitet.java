@@ -1,11 +1,10 @@
 /**
  *
  */
-package se.consid.fitness.anvandare.domain;
+package se.consid.fitness.administration.domain;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.UUID;
 
 import org.vertx.java.core.json.JsonObject;
 
@@ -13,7 +12,7 @@ import org.vertx.java.core.json.JsonObject;
  */
 public class Traningsaktivitet {
 
-	private final UUID id;
+	private final int id;
 	private final String namn;
 	private final double traningsekvivalent;
 	private final double minVarde;
@@ -21,7 +20,7 @@ public class Traningsaktivitet {
 	private final Date[] period;
 
 	private Traningsaktivitet(final JsonObject json) {
-		id = UUID.fromString(json.getString("_id"));
+		id = json.getInteger("_id");
 		namn = json.getString("namn");
 		traningsekvivalent = (Double) json.getNumber("traningsekvivalent");
 		minVarde = (Double) json.getNumber("minVarde");
@@ -33,7 +32,7 @@ public class Traningsaktivitet {
 		return new Traningsaktivitet(json);
 	}
 
-	public UUID getId() {
+	public int getId() {
 		return id;
 	}
 

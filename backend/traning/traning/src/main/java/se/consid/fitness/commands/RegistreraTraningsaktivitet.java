@@ -14,13 +14,13 @@ import se.consid.fitness.base.AbstractCommand;
 public class RegistreraTraningsaktivitet extends AbstractCommand {
 
 	private final String anvandareId;
-	private final String traningsaktivitetId;
+	private final int traningsaktivitetId;
 	private final Date datum;
 	private final double varde;
 
 	private RegistreraTraningsaktivitet(final JsonObject json) {
 		anvandareId = json.getString("anvandareId");
-		traningsaktivitetId = json.getString("traningsaktivitetId");
+		traningsaktivitetId = json.getInteger("traningsaktivitetId");
 		datum = new Date();
 		varde = (Double) json.getNumber("varde");
 	}
@@ -33,7 +33,7 @@ public class RegistreraTraningsaktivitet extends AbstractCommand {
 		return anvandareId;
 	}
 
-	public String getTraningsaktivitetId() {
+	public int getTraningsaktivitetId() {
 		return traningsaktivitetId;
 	}
 

@@ -6,18 +6,21 @@ var pa = 'test.mongodb';
 
 var traningsaktiviteter = [
 	{
+		'_id': 0,
 		'namn': 'Löpning',
 		'traningsekvivalent': 450,
 		'minvarde': 1,
 		'enhet': 'km'
 	},
 	{
+		'_id': 1,
 		'namn': 'Cykling',
 		'traningsekvivalent': 200,
 		'minvarde': 1,
 		'enhet': 'km'
 	},
 	{
+		'_id': 2,
 		'namn': 'Simning',
 		'traningsekvivalent': 2,
 		'minvarde': 200,
@@ -25,6 +28,7 @@ var traningsaktiviteter = [
 		'period' : ['2015-05-01', '2015-09-01']
 	},
 	{
+		'_id': 3,
 		'namn': 'Säckhoppning',
 		'traningsekvivalent': 4,
 		'minvarde': 10,

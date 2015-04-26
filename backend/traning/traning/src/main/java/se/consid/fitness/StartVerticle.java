@@ -29,6 +29,7 @@ public class StartVerticle extends Verticle {
 		container.logger().info("Starting Verticles");
 
 		container.deployVerticle("se.consid.fitness.CommandVerticle");
+		container.deployVerticle("se.consid.fitness.administration.TraningsaktivitetRepositoryVerticle");
 		container.deployVerticle("se.consid.fitness.anvandare.AnvandareCommandHandlerVerticle");
 		container.deployVerticle("se.consid.fitness.queries.HamtaTraningstillfalleVerticle");
 		container.deployVerticle("se.consid.fitness.QueryVerticle");
