@@ -30,7 +30,7 @@ public class HamtaTraningstillfalleVerticle extends Verticle {
 		};
 
 		vertx.eventBus().registerHandler("query.hamta.traningstillfalle", hamtaTraningstillfalle,
-				result -> container.logger().info("Hämta träningstillfälle " + result.succeeded()));
+				result -> container.logger().info("Hämta träningstillfällen : " + result.succeeded()));
 	}
 
 	private JsonObject createQuery(JsonObject body) {
