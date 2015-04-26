@@ -39,7 +39,7 @@ public class TraningstillfallenPerAnvandareRegistreradVerticle extends Verticle 
 
 	private JsonObject createMatcher(JsonObject body) {
 		final JsonObject matcher = new JsonObject();
-		matcher.putString("_id", body.getObject("inloggadanvandare").getString("_id"));
+		matcher.putString("_id", body.getObject("inloggadAnvandare").getString("_id"));
 		return matcher;
 	}
 
@@ -76,9 +76,9 @@ public class TraningstillfallenPerAnvandareRegistreradVerticle extends Verticle 
 		insert.putString("collection", "traningstillfallenperanvandare");
 
 		final JsonObject document = new JsonObject();
-		document.putString("_id", body.getObject("inloggadanvandare").getString("_id"));
-		document.putString("namn", body.getObject("inloggadanvandare").getString("namn"));
-		document.putString("kontorstillhorighet", body.getObject("inloggadanvandare").getString("kontorstillhorighet"));
+		document.putString("_id", body.getObject("inloggadAnvandare").getString("_id"));
+		document.putString("namn", body.getObject("inloggadAnvandare").getString("namn"));
+		document.putString("kontorstillhorighet", body.getObject("inloggadAnvandare").getString("kontorstillhorighet"));
 		final JsonArray traningstillfallen = new JsonArray();
 		final JsonObject traningstillfalle = new JsonObject();
 		traningstillfalle.putString("_id", body.getString("_id"));

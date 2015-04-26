@@ -36,7 +36,7 @@ public class TraningstillfallenPerAnvandareRedigeradVerticle extends Verticle {
 
 	private JsonObject createMatcher(JsonObject body) {
 		final JsonObject matcher = new JsonObject();
-		matcher.putString("_id", body.getObject("inloggadanvandare").getString("_id"));
+		matcher.putString("_id", body.getObject("inloggadAnvandare").getString("_id"));
 		return matcher;
 	}
 
