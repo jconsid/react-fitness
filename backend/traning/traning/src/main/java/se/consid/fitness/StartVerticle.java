@@ -20,6 +20,8 @@ package se.consid.fitness;
 
 import org.vertx.java.platform.Verticle;
 
+import se.consid.fitness.queries.camel.RouteManager;
+
 /**
  */
 public class StartVerticle extends Verticle {
@@ -32,6 +34,17 @@ public class StartVerticle extends Verticle {
 		container.deployVerticle("se.consid.fitness.CommandVerticle");
 		container.deployVerticle("se.consid.fitness.queries.HamtaTraningstillfalleVerticle");
 		container.deployVerticle("se.consid.fitness.QueryVerticle");
+		
+		
+		RouteManager routeManager = new RouteManager();
+		try {
+			routeManager.startRoutes();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 	}
 
 }

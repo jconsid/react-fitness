@@ -17,7 +17,7 @@ public class QueryVerticle extends Verticle {
 
 		httpServer.requestHandler(routeMatcher);
 
-		httpServer.listen(8888);
+		httpServer.listen(8188);
 	}
 
 	private RouteMatcher createRouteMatcher() {

@@ -37,7 +37,7 @@ public class CommandVerticle extends Verticle {
 			req.response().setStatusCode(402).end();
 		});
 
-		vertx.createHttpServer().requestHandler(routeMatcher).listen(8000);
+		vertx.createHttpServer().requestHandler(routeMatcher).listen(8100);
 
 		log.info("Command server started.");
 	}
